@@ -1,0 +1,16 @@
+/* exo 2 font */
+/* @import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@400;600;700&display=swap'); */
+
+/* fira code font*/
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&display=swap');
+
+/* body {
+  font-family: 'Exo 2', sans-serif;
+} */
+body {
+  font-family: 'Fira Code', monospace;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
