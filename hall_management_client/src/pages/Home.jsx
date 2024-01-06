@@ -7,6 +7,9 @@ import Container from '../components/ui/Container';
 import "../styles/banner.css"
 import Marquee from 'react-fast-marquee'
 import { Link, NavLink } from 'react-router-dom';
+import About from '../components/ui/About';
+import Achievements from '../components/ui/achievement';
+import Slider from '../components/ui/Slider';
 
 const Home = () => {
   
@@ -30,6 +33,16 @@ const Home = () => {
         </Marquee>
       </Container>
       <Banner />
+      <div className="mb-6 mt-10">
+      <h1 className='text-4xl text-center font-bold font-serif'>About</h1>
+      </div>
+      <About/>
+
+      <div className="mb-6 mt-10">
+      <h1 className='text-4xl text-center font-bold font-serif'>Achivements</h1>
+      </div>
+      <Achievements/>
+      <Slider/>
       <Accordion/>
       <Footer />
       </div>

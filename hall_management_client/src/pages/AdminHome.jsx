@@ -1,6 +1,13 @@
 import React, { useState } from 'react';
 import Token from './Token';
-import YourComponent from './admin/students';
+import Students from './admin/Students';
+import Allotment from './admin/allotment';
+import RoomDetails from './admin/RoomDetails';
+import Complains from './admin/Complains';
+import TokenRequest from './admin/tokenrequest';
+import Tokendetails from './admin/tokendetails';
+import FeesRequest from './admin/feesrequest';
+import FeesDetails from './admin/feesdetails';
 // Assuming you have a function for logging out
 
 
@@ -18,11 +25,25 @@ const AdminHome = () => {
   const renderTabContent = () => {
     switch (selectedTab) {
       case 'students':
-        return <YourComponent />;
+        return <Students />;
       case 'notices':
         return <div className="p-4">All Notices Information Goes Here</div>;
       case 'createAnnouncement':
         return <div className="p-4">Create Announcement Form Goes Here</div>;
+      case 'Allotment_Request':
+          return <Allotment/>;
+      case 'Room_details':
+          return <RoomDetails/>;
+      case 'complains':
+          return <Complains/>;
+      case 'tokenrequest':
+        return <TokenRequest/>;
+      case 'tokendetails':
+        return <Tokendetails/>;
+      case 'feesrequest':
+        return <FeesRequest/>;
+      case 'feesdetails':
+        return <FeesDetails/>;
       default:
         return null;
     }
@@ -77,6 +98,90 @@ const AdminHome = () => {
               onClick={() => handleTabClick('createAnnouncement')}
             >
               Create Announcement
+            </button>
+          </li>
+          <li>
+            <button
+              className={`${
+                selectedTab === 'Allotment_Request'
+                  ? 'bg-blue-500 text-white'
+                  : ''
+              } py-2 px-4 w-full rounded`}
+              onClick={() => handleTabClick('Allotment_Request')}
+            >
+              Allotment_Request
+            </button>
+          </li>
+          <li>
+            <button
+              className={`${
+                selectedTab === 'Room_details'
+                  ? 'bg-blue-500 text-white'
+                  : ''
+              } py-2 px-4 w-full rounded`}
+              onClick={() => handleTabClick('Room_details')}
+            >
+              Room Details
+            </button>
+          </li>
+          <li>
+            <button
+              className={`${
+                selectedTab === 'complains'
+                  ? 'bg-blue-500 text-white'
+                  : ''
+              } py-2 px-4 w-full rounded`}
+              onClick={() => handleTabClick('complains')}
+            >
+              Complains
+            </button>
+          </li>
+          <li>
+            <button
+              className={`${
+                selectedTab === 'tokenrequest'
+                  ? 'bg-blue-500 text-white'
+                  : ''
+              } py-2 px-4 w-full rounded`}
+              onClick={() => handleTabClick('tokenrequest')}
+            >
+              Token Request
+            </button>
+          </li>
+          <li>
+            <button
+              className={`${
+                selectedTab === 'tokendetails'
+                  ? 'bg-blue-500 text-white'
+                  : ''
+              } py-2 px-4 w-full rounded`}
+              onClick={() => handleTabClick('tokendetails')}
+            >
+              Token Details
+            </button>
+          </li>
+          <li>
+            <button
+              className={`${
+                selectedTab === 'feesrequest'
+                  ? 'bg-blue-500 text-white'
+                  : ''
+              } py-2 px-4 w-full rounded`}
+              onClick={() => handleTabClick('feesrequest')}
+            >
+              Hall Fees Request
+            </button>
+          </li>
+          <li>
+            <button
+              className={`${
+                selectedTab === 'feesdetails'
+                  ? 'bg-blue-500 text-white'
+                  : ''
+              } py-2 px-4 w-full rounded`}
+              onClick={() => handleTabClick('feesdetails')}
+            >
+              Hall Fees Details
             </button>
           </li>
           {/* Add more tabs as needed */}

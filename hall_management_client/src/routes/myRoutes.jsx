@@ -1,4 +1,4 @@
-import { createBrowserRouter } from 'react-router-dom';
+import { Form, createBrowserRouter } from 'react-router-dom';
 import MainLayout from '../components/layouts/MainLayout';
 import Error from '../pages/Error';
 import Home from '../pages/Home';
@@ -9,6 +9,8 @@ import AdminLayout from '../components/layouts/AdminLayout';
 import AdminHome from '../pages/AdminHome';
 import Achievements from '../pages/Achievements'
 import Token from '../pages/Token';
+import Roomallote from '../pages/Roomallote';
+import Complain from '../pages/Complain';
 const myRoutes = createBrowserRouter([
   {
     path: '/',
@@ -24,9 +26,21 @@ const myRoutes = createBrowserRouter([
         element:<Achievements/>,
       },
       {
+        path:"/complain",
+        element:<Complain/>,
+      },
+      {
         path:"/token",
         element:<Token/>,
-      }
+      },
+      { 
+        path: '/hallfee',
+        element: <Hallfee />,
+      },
+      { 
+        path: '/roomallote',
+        element: <Roomallote />,
+      },
     ],
   },
   {
@@ -37,17 +51,7 @@ const myRoutes = createBrowserRouter([
     path: '/register',
     element: <Register />,
   },
-  { 
-    path: '/hallfee',
-    element: <MainLayout />,
-    errorElement: <Error />,
-    children: [
-      {
-        index: true,
-        element: <Hallfee />,
-      },
-    ],
-  },
+  
   {
     path: '/admin',
     element: <AdminLayout />,

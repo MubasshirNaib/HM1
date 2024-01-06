@@ -23,7 +23,7 @@ const Banner = () => {
       spaceBetween={50}
       centeredSlides={true}
       autoplay={{
-        delay: 3000,
+        delay: 7000,
         disableOnInteraction: false,
       }}
       // effect="flip"
@@ -35,7 +35,10 @@ const Banner = () => {
       onSlideChange={() => console.log('slide change')}
       >
     <SwiperSlide>
+
       <img src='https://i.ibb.co/YTMQJVS/IMG20231208114348.jpg' alt="" style={{width: '100%',height: '91vh'}}/>
+      {/* <p className="absolute top-0 left-0 text-black text-xl font-extrabold p-4">Your text here</p> */}
+      
     </SwiperSlide>
     <SwiperSlide>
     <img src="https://i.ibb.co/gwbb19h/IMG20231208114152.jpg" alt="" style={{width: '100%',height: '91vh'}} />

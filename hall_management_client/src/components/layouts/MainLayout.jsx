@@ -2,6 +2,7 @@ import { Outlet } from 'react-router-dom';
 import Navbar from '../Navbar';
 import SideBar from '../SideBar';
 import Container from '../ui/Container';
+import About from '../ui/About';
 
 const MainLayout = () => {
   return (

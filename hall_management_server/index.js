@@ -6,6 +6,8 @@ const cors = require('cors');
 const cookieParser = require('cookie-parser');
 const { MongoClient, ServerApiVersion, ObjectId } = require('mongodb');
 
+
+
 // mongodb uri
 const uri = process.env.URI;
 
@@ -94,13 +96,179 @@ app.post('logout', async (req, res) => {
     });
 });
 
+// collections
+const usersCollection = client.db("hall-management").collection("users");
+const complainsCollection = client.db("hall-management").collection("complains");
+const hallfeesCollection = client.db("hall-management").collection("hallfees");
+const tokenDatesCollection = client.db("hall-management").collection("token-dates");
+const tokenusersCollection = client.db("hall-management").collection("tokenusers");
+const roomusersCollection = client.db("hall-management").collection("roomusers");
+const roomdetailsCollection = client.db("hall-management").collection("roomdetails");
+const tokendetailsCollection = client.db("hall-management").collection("tokendetails");
+const feesdetailsCollection = client.db("hall-management").collection("feesdetails");
 // ------------------- {GET} METHODS ----------------\\
+app.get('/users', async (req, res) => {
+  const cursor = await usersCollection.find();
+  const result = await cursor.toArray();
+  res.status(200).send(result);
+});
+app.get('/token-dates', async(req, res) => {
+  try {
+    const cursor= await tokenDatesCollection.find();
+    const result = await cursor.toArray();
+    // console.log(result);
+    res.status(200).send(result);
+  } catch (error) {
+    console.log(error);
+  }
+})
+app.get('/roomusers', async(req, res) => {
+  try {
+    const cursor= await roomusersCollection.find();
+    const result = await cursor.toArray();
+    // console.log(result);
+    res.status(200).send(result);
+  } catch (error) {
+    console.log(error);
+  }
+})
+app.get('/tokenusers', async(req, res) => {
+  try {
+    const cursor= await tokenusersCollection.find();
+    const result = await cursor.toArray();
+    // console.log(result);
+    res.status(200).send(result);
+  } catch (error) {
+    console.log(error);
+  }
+})
+app.get('/roomdetails', async(req, res) => {
+  try {
+    const cursor= await roomdetailsCollection.find();
+    const result = await cursor.toArray();
+    // console.log(result);
+    res.status(200).send(result);
+  } catch (error) {
+    console.log(error);
+  }
+})
+app.get('/feesdetails', async(req, res) => {
+  try {
+    const cursor= await feesdetailsCollection.find();
+    const result = await cursor.toArray();
+    // console.log(result);
+    res.status(200).send(result);
+  } catch (error) {
+    console.log(error);
+  }
+})
+app.get('/tokendetails', async(req, res) => {
+  try {
+    const cursor= await tokendetailsCollection.find();
+    const result = await cursor.toArray();
+    // console.log(result);
+    res.status(200).send(result);
+  } catch (error) {
+    console.log(error);
+  }
+})
+app.get('/hallfees', async(req, res) => {
+  try {
+    const cursor= await hallfeesCollection.find();
+    const result = await cursor.toArray();
+    // console.log(result);
+    res.status(200).send(result);
+  } catch (error) {
+    console.log(error);
+  }
+})
+app.get('/complains', async(req, res) => {
+  try {
+    const cursor= await complainsCollection.find();
+    const result = await cursor.toArray();
+    // console.log(result);
+    res.status(200).send(result);
+  } catch (error) {
+    console.log(error);
+  }
+})
+app.get("/users/:email", async(req, res) => {
+  try {
+    const result = await usersCollection.findOne({email:req?.params?.email});
+    // console.log('email found', result);
+    res.status(200).send(result);
+  } catch (error) {
+    console.log(error);
+  }
+})
 
-
+// app.get('/users/user/:id', async (req, res) => {
+//   try {
+//     const result = await usersCollection.findOne({ ID: req?.params?.id });
+//     console.log('ID found', result);
+//     res.status(200).send(result);
+//   } catch (error) {
+//     console.log(error);
+//   }
+// })
 
 
 // ------------------- {POST} METHODS ----------------\\
-
+app.post("/users", async(req, res) => {
+  const body = req.body;
+  // now save to mongodb
+  const result = await usersCollection.insertOne(body);
+  res.status(200).send(result);
+})
+app.post("/feesdetails", async(req, res) => {
+  const body = req.body;
+  // now save to mongodb
+  const result = await feesdetailsCollection.insertOne(body);
+  res.status(200).send(result);
+})
+app.post("/complains", async(req, res) => {
+  const body = req.body;
+  // now save to mongodb
+  const result = await complainsCollection.insertOne(body);
+  res.status(200).send(result);
+})
+app.post("/hallfees", async(req, res) => {
+  const body = req.body;
+  // now save to mongodb
+  const result = await hallfeesCollection.insertOne(body);
+  res.status(200).send(result);
+})
+app.post("/tokenusers", async(req, res) => {
+  const body = req.body;
+  // now save to mongodb
+  const result = await tokenusersCollection.insertOne(body);
+  res.status(200).send(result);
+})
+app.post("/roomusers", async(req, res) => {
+  const body = req.body;
+  // now save to mongodb
+  const result = await roomusersCollection.insertOne(body);
+  res.status(200).send(result);
+})
+app.post("/roomdetails", async(req, res) => {
+  const body = req.body;
+  // now save to mongodb
+  const result = await roomdetailsCollection.insertOne(body);
+  res.status(200).send(result);
+})
+app.post("/tokendetails", async(req, res) => {
+  const body = req.body;
+  // now save to mongodb
+  const result = await tokendetailsCollection.insertOne(body);
+  res.status(200).send(result);
+})
+app.patch("/token-dates", async(req, res) => {
+  try {
+    const body = req.body;
+  } catch (error) {
+      console.log(error);
+  }
+})
 
 // ------------------- {PUT/PATCH} METHODS ----------------\\
 
@@ -108,6 +276,48 @@ app.post('logout', async (req, res) => {
 
 
 // ------------------- {DELETE} METHODS ----------------\\
+app.delete('/complains/:id', async(req, res) => {
+  const id = req.params.id;
+  console.log(id);
+  const result = await   complainsCollection.deleteOne({_id: new ObjectId(id)});
+  res.status(200).send(result)
+})
+app.delete('/tokenusers/:id', async(req, res) => {
+  const id = req.params.id;
+  console.log(id);
+  const result = await   tokenusersCollection.deleteOne({_id: new ObjectId(id)});
+  res.status(200).send(result)
+})
+app.delete('/tokendetails/:id', async(req, res) => {
+  const id = req.params.id;
+  console.log(id);
+  const result = await   tokendetailsCollection.deleteOne({_id: new ObjectId(id)});
+  res.status(200).send(result)
+})
+app.delete('/roomdetails/:id', async(req, res) => {
+  const id = req.params.id;
+  console.log(id);
+  const result = await   roomdetailsCollection.deleteOne({_id: new ObjectId(id)});
+  res.status(200).send(result)
+})
+app.delete('/feesdetails/:id', async(req, res) => {
+  const id = req.params.id;
+  console.log(id);
+  const result = await   feesdetailsCollection.deleteOne({_id: new ObjectId(id)});
+  res.status(200).send(result)
+})
+app.delete('/roomusers/:id', async(req, res) => {
+  const id = req.params.id;
+  console.log(id);
+  const result = await   roomusersCollection.deleteOne({_id: new ObjectId(id)});
+  res.status(200).send(result)
+})
+app.delete('/hallfees/:id', async(req, res) => {
+  const id = req.params.id;
+  console.log(id);
+  const result = await   hallfeesCollection.deleteOne({_id: new ObjectId(id)});
+  res.status(200).send(result)
+})
 
 
 // ------------------- SERVER STARTER GET METHOD ----------------\\
@@ -117,4 +327,5 @@ app.get('/', (req, res) => {
 const port = 3000;
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
+  
 });

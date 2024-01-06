@@ -13,7 +13,7 @@ const Navbar = () => {
   };
   return (
     <div className='flex justify-between w-full'>
-      <div className='flex-1 px-2 mx-2 font-bold text-2xl'>Hall-Management</div>
+      <div className='flex-1 px-2 mx-2 font-bold text-2xl'>Shahid Tarek Huda Hall</div>
       <div className='flex-none hidden lg:block'>
         <div className='flex gap-3 items-center'>
           <NavLink
@@ -41,12 +41,20 @@ const Navbar = () => {
             Hall fee
           </NavLink>
           <NavLink
-            to={`/achievements`}
+            to={`/complain`}
             className={({ isActive }) =>
               isActive ? 'btn btn-sm btn-primary' : 'btn btn-sm btn-ghost'
             }
           >
-            Achievements
+            Complains
+          </NavLink>
+          <NavLink
+            to={`/roomallote`}
+            className={({ isActive }) =>
+              isActive ? 'btn btn-sm btn-primary' : 'btn btn-sm btn-ghost'
+            }
+          >
+            Room Allotement
           </NavLink>
           {user?.email ? (
             <div className='dropdown dropdown-end'>
@@ -59,12 +67,7 @@ const Navbar = () => {
                 tabIndex={0}
                 className='menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52'
               >
-                <li>
-                  <Link to={'/added-foods'} className='justify-between'>My added food items</Link>
-                </li>
-                <li>
-                  <Link to={'/add-food'} className='justify-between'>Add a food item</Link>
-                </li>
+                
                 <li>
                   <Link to={'/ordered-food'} className='justify-between'>My ordered food items</Link>
                 </li>
